@@ -13,8 +13,6 @@ npm install
 npm run dev
 ```
 
-**Ask Unnati** works without an API key. Its answers come from the local resume knowledge base in `src/resumeData.js`. Add or edit entries there as your resume changes.
-
 ## Scripts
 
 - `npm run dev` starts the development server.
