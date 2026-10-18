@@ -2,15 +2,12 @@ import React,{useEffect,useRef,useState} from 'react';
 import {motion,useMotionValue,useTransform,useScroll,useMotionValueEvent} from 'framer-motion';
 import {getAudio} from './voice';
 import GloRide from './GloRide';
-import {mountRideMusic,unmountRideMusic} from './rideMusic';
 
 const engines={
  cruiser:{label:'cruiser thump',wave:'sawtooth',f:[75,200],lfo:[8,22],depth:.55,filter:[700,2200]},
  sport:{label:'sports scream',wave:'sawtooth',f:[140,900],lfo:[30,70],depth:.15,filter:[1500,6000]},
  scooter:{label:'scooter putt-putt',wave:'square',f:[120,420],lfo:[20,45],depth:.3,filter:[900,2500]}
 };
-// Spotify embed for the garage: type is 'album' or 'playlist', id is the part after it in the share link.
-const RIDE_MUSIC={type:'album',id:'7rBIioPKNbFbedgP6iioLN'}; // AUJLA SZN 1
 
 function useEngine(profileRef){
  const ref=useRef(null);
@@ -44,16 +41,6 @@ function useEngine(profileRef){
  };
  useEffect(()=>()=>ref.current?.master.disconnect(),[]);
  return {start,update};
-}
-
-function RideMusic(){
- const host=useRef(null);
- useEffect(()=>{
-  const el=document.createElement('div'); host.current.appendChild(el); // Spotify replaces this node with its iframe
-  mountRideMusic(el,`spotify:${RIDE_MUSIC.type}:${RIDE_MUSIC.id}`);
-  return ()=>{unmountRideMusic(); host.current&&(host.current.innerHTML='');};
- },[]);
- return <div ref={host} className="ride-embed"/>;
 }
 
 export default function Garage({sound}){
@@ -128,6 +115,5 @@ export default function Garage({sound}){
    </div>
   </div>
   <GloRide sound={sound}/>
-  {RIDE_MUSIC&&<div className="ride-playlist"><div className="section-label">ride soundtrack · plays when you ride</div><RideMusic/></div>}
  </section>;
 }

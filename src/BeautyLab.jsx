@@ -1,7 +1,6 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {motion} from 'framer-motion';
 import {getLandmarker,LIPS_OUTER,LIPS_INNER,CHEEKS,LIDS,FACE_EDGES} from './faceTracking';
-import SwatchWall from './SwatchWall';
 
 const lipsticks=[
  {name:'rose',color:'#c2185b'},
@@ -159,6 +158,5 @@ export default function BeautyLab({onTheme}){
   <h2>where makeup<br/><span>meets machine learning.</span></h2>
   <p className="lab-intro">Real-time face tracking with MediaPipe, running on your device. Try a lipstick live, or let a photo pick your shade.</p>
   <div className="lab-cards"><TryOn shade={shade} setShade={setShade}/><ShadeMatcher onTheme={onTheme} onTry={tryShade}/></div>
-  <SwatchWall/>
  </section>;
 }

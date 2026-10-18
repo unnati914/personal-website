@@ -1,6 +1,5 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {getAudio} from './voice';
-import {autoPlay,autoPause} from './rideMusic';
 
 const H=240, GROUND=H-40, PLAYER_X=90;
 const kinds=[
@@ -38,13 +37,12 @@ function drawRider(ctx,x,y,spin,col){
 export default function GloRide({sound}){
  const canvas=useRef(null), wrap=useRef(null), soundRef=useRef(sound); soundRef.current=sound;
  const [state,setState]=useState('ready'); const [score,setScore]=useState(0); const [best,setBest]=useState(readBest); const [killer,setKiller]=useState('');
- useEffect(()=>{if(!sound)autoPause();},[sound]);
  const g=useRef({}), visible=useRef(false), stateRef=useRef('ready');
  const setPhase=p=>{stateRef.current=p; setState(p);};
 
  const reset=()=>{g.current={y:0,vy:0,dist:0,speed:6,obstacles:[],nextIn:60,spin:0,frame:0};};
  const jump=()=>{
-  if(stateRef.current!=='running'){reset(); setScore(0); setPhase('running'); if(soundRef.current)autoPlay(); return;}
+  if(stateRef.current!=='running'){reset(); setScore(0); setPhase('running'); return;}
   if(g.current.y===0){g.current.vy=-11.5; if(soundRef.current)blip(330,.15);}
  };
 
@@ -52,7 +50,6 @@ export default function GloRide({sound}){
   reset();
   const io=new IntersectionObserver(([e])=>{
    visible.current=e.isIntersecting;
-   if(e.isIntersecting&&soundRef.current)autoPlay(); else if(!e.isIntersecting)autoPause();
   },{threshold:.3});
   io.observe(wrap.current);
   const key=e=>{
