@@ -35,7 +35,6 @@ const countVisit=()=>{let n=Number(readStore('visits',0))||0; try{if(!sessionSto
 const visitGreeting=n=>n>1?`welcome back! visit #${n} 💖`:'hi, I’m Glo ✨ Unnati’s build buddy';
 const statusLabels=['probably asleep 😴','chai + inbox ☕','building with AI','maybe out on a ride 🏍️','planning the next trip 🗺️'];
 const indiaStatus=()=>{const now=new Date(); const time=now.toLocaleTimeString('en-IN',{timeZone:'Asia/Kolkata',hour:'numeric',minute:'2-digit'}); const h=Number(now.toLocaleString('en-GB',{timeZone:'Asia/Kolkata',hour:'2-digit',hour12:false})); const slot=h<7?0:h<10?1:h<19?2:h<22?3:4; return {time,slot,awake:h>=7};};
-const isNightHour=()=>{const h=new Date().getHours(); return h>=19||h<6;};
 const path=window.location.pathname.replace(/\/+$/,'')||'/';
 const isPlay=path==='/play';
 const isHome=path==='/'||path==='/index.html';
@@ -59,19 +58,17 @@ function App(){
  const [ask,setAsk]=useState(false); const [selectedCareer,setSelectedCareer]=useState(0); const [guestNote,setGuestNote]=useState(''); const [recruiterView,setRecruiterView]=useState(false); const [accessibilityMode,setAccessibilityMode]=useState(false); const systemReduced=useReducedMotion(); const [showBuddy,setShowBuddy]=useState(false); const [sound,setSound]=useState(readSound); const [menuOpen,setMenuOpen]=useState(false);
  useEffect(()=>{if(!menuOpen)return; const close=e=>{if(e.type==='keydown'?e.key==='Escape':!e.target.closest('header'))setMenuOpen(false);}; window.addEventListener('pointerdown',close); window.addEventListener('keydown',close); return ()=>{window.removeEventListener('pointerdown',close); window.removeEventListener('keydown',close);};},[menuOpen]);
  const [caseStudy,setCaseStudy]=useState(null); const [outfit,setOutfit]=useState('');
- const [palette,setPalette]=useState(false); const [themePref,setThemePref]=useState(()=>readStore('theme','auto')); const [nightHour,setNightHour]=useState(isNightHour); const [neon,setNeon]=useState(false); const [burst,setBurst]=useState(0); const [toast,setToast]=useState(''); const [visits]=useState(countVisit); const [status,setStatus]=useState(indiaStatus);
+ const [palette,setPalette]=useState(false); const [neon,setNeon]=useState(false); const [burst,setBurst]=useState(0); const [toast,setToast]=useState(''); const [visits]=useState(countVisit); const [status,setStatus]=useState(indiaStatus);
  const [siteColor,setSiteColor]=useState(()=>readStore('shade','blush'));
- const night=themePref==='night'||(themePref==='auto'&&nightHour);
  const reduced=accessibilityMode||!!systemReduced;
- useEffect(()=>{const t=setInterval(()=>{setStatus(indiaStatus());setNightHour(isNightHour());},30000); return ()=>clearInterval(t);},[]);
- useEffect(()=>{document.documentElement.classList.toggle('night',night); writeStore('theme',themePref);},[night,themePref]);
+ useEffect(()=>{const t=setInterval(()=>{setStatus(indiaStatus());},30000); return ()=>clearInterval(t);},[]);
+ useEffect(()=>{document.documentElement.classList.remove('night'); try{localStorage.removeItem('theme')}catch{}},[]);
  useEffect(()=>{document.documentElement.classList.toggle('neon',neon);},[neon]);
  useEffect(()=>{const c=(siteColors.find(s=>s.name===siteColor)||siteColors[0]).color; document.documentElement.style.setProperty('--accent',c); writeStore('shade',siteColor);},[siteColor]);
  useEffect(()=>{if(!toast)return; const t=setTimeout(()=>setToast(''),3500); return ()=>clearTimeout(t);},[toast]);
  useEffect(()=>{const k=e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();setPalette(p=>!p);}}; window.addEventListener('keydown',k); return ()=>window.removeEventListener('keydown',k);},[]);
  const toggleSound=()=>{const on=!sound; setSound(on); if(on){chime(); speak('Sound on!');}};
  useEffect(()=>{const outfits={garage:'helmet',travel:'shades'}; const seen=new Map(); const io=new IntersectionObserver(entries=>{entries.forEach(e=>seen.set(e.target.id,e.isIntersecting)); const id=Object.keys(outfits).find(k=>seen.get(k)); setOutfit(id?outfits[id]:'');},{rootMargin:'-35% 0px -35% 0px'}); Object.keys(outfits).forEach(id=>{const el=document.getElementById(id); if(el)io.observe(el);}); return ()=>io.disconnect();},[recruiterView]);
- const cycleTheme=()=>setThemePref(p=>({auto:'day',day:'night',night:'auto'})[p]);
  const toggleSecret=()=>{const on=!neon; setNeon(on); if(on){if(!reduced)setBurst(b=>b+1); setToast('secret neon mode unlocked ✨ enter the code again to exit'); if(sound)speak('Secret mode unlocked!');} else setToast('back to normal. our secret 🤫');};
  useKonami(toggleSecret);
  const openCase=name=>setCaseStudy(career.find(c=>c.name===name)||null);
@@ -87,7 +84,6 @@ function App(){
   {group:'action',icon:'↗',label:'open github',run:()=>window.open('https://github.com/unnati914','_blank','noopener')},
   {group:'action',icon:'↗',label:'open x (twitter)',run:()=>window.open('https://x.com/Unnati_twts','_blank','noopener')},
   {group:'action',icon:'↗',label:'open linkedin',run:()=>window.open('https://www.linkedin.com/in/unnati-chhabra-/','_blank','noopener')},
-  {group:'setting',icon:night?'☀':'☾',label:`theme: ${themePref} (switch)`,keywords:'dark night day mode',run:cycleTheme},
   {group:'setting',icon:'♪',label:sound?'turn sound off':'turn sound on',run:()=>toggleSound()},
   {group:'setting',icon:'◎',label:recruiterView?'full site':'recruiter view',run:()=>setRecruiterView(!recruiterView)},
   {group:'setting',icon:'Aa',label:accessibilityMode?'normal text':'accessibility mode',run:()=>setAccessibilityMode(!accessibilityMode)},
@@ -98,7 +94,7 @@ function App(){
  if(!isHome&&!isPlay)return <main className="not-found"><span className="section-label">404 · experiment escaped</span><h1>This page has entered its unexplained experiment era.</h1><p>No route found. The good news: this one is definitely not a product decision.</p><a className="primary" href="/">back to the actual website <ArrowUpRight size={18}/></a></main>;
  const h=id=>isHome?`#${id}`:`/#${id}`;
  return <MotionConfig reducedMotion={accessibilityMode?'always':'user'}><div className={`${recruiterView&&isHome?'app recruiter-view':'app'}${accessibilityMode?' accessibility-mode':''}`}>
-  <header><a className="logo" href={isHome?'#top':'/'}>UC<span>.</span></a><nav><a href={h('work')}>work</a><a href={h('career')}>career</a><a href={h('gtm')}>gtm</a><a href={h('writing')}>writing</a><a href="/play" className={isPlay?'nav-on':''}>play</a><button onClick={()=>setAsk(true)}>ask unnati ↗</button><div id="site-settings" className={menuOpen?'settings open':'settings'}>{isHome&&<button className="recruiter-toggle" onClick={()=>setRecruiterView(!recruiterView)}>{recruiterView?'full site':'recruiter view'}</button>}<button className="setting-toggle" aria-pressed={accessibilityMode} onClick={()=>setAccessibilityMode(!accessibilityMode)}>{accessibilityMode?'normal text':'accessibility'}</button><button className="setting-toggle" aria-pressed={sound} onClick={toggleSound}>{sound?'sound on':'sound off'}</button><button className="setting-toggle" onClick={cycleTheme} aria-label={`Theme: ${themePref}. Click to switch.`}>{themePref==='auto'?(night?'☾ auto':'☀ auto'):themePref==='night'?'☾ night':'☀ day'}</button><ColorPicker value={siteColor} onChange={setSiteColor}/><button className="kbd-hint" onClick={()=>setPalette(true)} aria-label="Open command palette">⌘K</button></div><button className="menu-toggle" aria-expanded={menuOpen} aria-controls="site-settings" onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?'close ✕':'menu ☰'}</button></nav><ScrollRoad/></header>
+  <header><a className="logo" href={isHome?'#top':'/'}>UC<span>.</span></a><nav><a href={h('work')}>work</a><a href={h('career')}>career</a><a href={h('gtm')}>gtm</a><a href={h('writing')}>writing</a><a href="/play" className={isPlay?'nav-on':''}>play</a><button onClick={()=>setAsk(true)}>ask unnati ↗</button><div id="site-settings" className={menuOpen?'settings open':'settings'}>{isHome&&<button className="recruiter-toggle" onClick={()=>setRecruiterView(!recruiterView)}>{recruiterView?'full site':'recruiter view'}</button>}<button className="setting-toggle" aria-pressed={accessibilityMode} onClick={()=>setAccessibilityMode(!accessibilityMode)}>{accessibilityMode?'normal text':'accessibility'}</button><button className="setting-toggle" aria-pressed={sound} onClick={toggleSound}>{sound?'sound on':'sound off'}</button><ColorPicker value={siteColor} onChange={setSiteColor}/><button className="kbd-hint" onClick={()=>setPalette(true)} aria-label="Open command palette">⌘K</button></div><button className="menu-toggle" aria-expanded={menuOpen} aria-controls="site-settings" onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?'close ✕':'menu ☰'}</button></nav><ScrollRoad/></header>
   <main id="top">
   {isPlay?<Play sound={sound} reduced={reduced}/>:<>
   <RecruiterSummary/>
