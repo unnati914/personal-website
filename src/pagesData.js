@@ -88,5 +88,10 @@ export const mediaKit={
   {name:'HackerRank Chakra launch',metric:'5.1K views',url:x('2112183248654856193')},
   {name:'Vidu AI how-to thread',metric:'4K views',url:x('1931995849610977613')}
  ],
+ rates:[
+  {h:'Post on X',price:'$200',p:'A dedicated post about your product, written in my voice for my audience.'},
+  {h:'Quote post on X',price:'$100',p:'I quote your launch or announcement and add my own take.'},
+  {h:'Threads, videos, events, bundles',price:'Custom',p:'Send the brief and I’ll quote it.'}
+ ],
  email:'chhabraunnati234@gmail.com'
 };
