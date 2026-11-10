@@ -29,7 +29,7 @@ export const resumeKnowledge = [
   },
   {
     topics: ['project', 'build', 'built', 'agent', 'eval'],
-    answer: 'Unnati builds production AI products, agents, RAG systems, and backend infrastructure. Her current portfolio projects include Imlea, Resume Roaster, LinkGenie, Paysecure, Cart Healthifier, and Anomalyzer.'
+    answer: 'Unnati builds production AI products, agents, RAG systems, and backend infrastructure. Featured work on this site: Imlea (a learning app for school kids), demo-first pitches for Wavelength, Emergent, Agnost and Prodigal, GenAI agents for VISA at Grid Dynamics, Hirvana (her AI career platform), Resume Roaster and X Dating. The fun extras, like her bike garage and travel log, live on the /play page.'
   },
   {
     topics: ['imlea'],

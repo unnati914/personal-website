@@ -71,7 +71,7 @@ export default function Garage({sound}){
  const up=()=>{hold.current=false; setRevving(false); if(soundRef.current)engine.start();};
  const key=(e,v)=>{if((e.key===' '||e.key==='Enter')&&!e.repeat){e.preventDefault(); v?down():up();}};
  return <section id="garage" className="garage">
-  <div className="section-label">09 / the garage</div>
+  <div className="section-label">03 / the garage</div>
   <div className="garage-grid">
    <div>
     <h2>off the clock,<br/><span>on the road.</span></h2>
