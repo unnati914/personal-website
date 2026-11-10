@@ -4,8 +4,8 @@ const x=id=>`https://x.com/Unnati_twts/status/${id}`;
 // Add one line at the TOP each week. date: YYYY-MM-DD, url is optional.
 export const buildLog=[
  {date:'2026-11-10',text:'friday pilot demo: plans matched by who’s going, Instant Meet and a Bangalore vs Dubai waitlist race',url:'https://friday-demo-xi.vercel.app'},
- {date:'2026-11-08',text:'Hot Takes: Rewind, a metro feedback game that scores how much to trust each answer, plus an AI question critic',url:'https://hottakes-assignment.vercel.app'},
  {date:'2026-11-10',text:'Revamped this site: GTM & community, writing & talks, per-company pitch pages and /play',url:'/'},
+ {date:'2026-11-08',text:'Hot Takes: Rewind, a metro feedback game that scores how much to trust each answer, plus an AI question critic',url:'https://hottakes-assignment.vercel.app'},
  {date:'2026-11-05',text:'Opened Imlea for testing: memory, adaptive paths and curriculum-grounded answers',url:x('2118330495675380202')},
  {date:'2026-10-30',text:'Call Guard demo for Prodigal: 0/12 → 12/12 safe collection calls',url:'/for/prodigal'},
  {date:'2026-10-29',text:'Saved-evals demo for Agnost: 12 chats in English, Hindi and Hinglish',url:'/for/agnost'},
