@@ -13,7 +13,7 @@ export const featured=[
   result:'80% retrieval accuracy · 40 hours saved weekly',caseStudy:'Grid Dynamics',cta:'read the case study'},
  {name:'Hirvana',tag:'founder',big:'3',small:'paid cohorts run',
   desc:'My AI career platform: resume tailoring, an AI job-hunting agent and paid mentorship cohorts. I built it and ran the launch on X.',
-  result:'Launched end to end: teaser, pricing, giveaway, product',url:x('1919088356442656787'),cta:'see the launch'},
+  result:'41K views on the first offer · 25 sign-ups in 4 days',url:'/case/hirvana',cta:'read the case study'},
  {name:'Resume Roaster',tag:'AI product',big:'14.9K',small:'views on a quiet launch',
   desc:'An AI tool that reviews your resume with brutal honesty and tells you exactly what to fix.',
   result:'Inbound DMs from people at PhonePe and others',url:'https://github.com/unnati914/Resume-Roaster',cta:'view on github'},

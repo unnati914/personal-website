@@ -21,7 +21,7 @@ export const gtmTabs=[
   {name:'phidata (now Agno)',what:'Developer content and about 29 example agents and docs PRs',metric:'12.9K views',url:x('1857784696853422456')}
  ]},
  {id:'launches',label:'launches I ran',intro:'My own products, taken from idea to audience. I wrote the positioning, ran the campaign and handled the signups.',items:[
-  {name:'Hirvana launch',what:'Teaser, positioning, founder story, early-bird pricing, giveaway, then the product',metric:'6.8K views',url:x('1919088356442656787')},
+  {name:'Hirvana launch',what:'Tested demand with one post, then teaser, positioning, pricing, giveaway and the product. Read the case study',metric:'41K views',url:'/case/hirvana'},
   {name:'Hirvana Cohort 3.0',what:'A paid mentorship cohort: resume reviews, mock interviews, community',url:x('2059964127196672244')},
   {name:'7-day system design bootcamp',what:'Learn backend and AI integration by building one real project',url:x('2063138823928999953')},
   {name:'Resume Roaster',what:'A quiet launch that brought DMs from people at PhonePe and others',metric:'14.9K views',url:x('1934268566985216156')},
@@ -31,7 +31,7 @@ export const gtmTabs=[
   {name:'AI Failure Files',what:'A video series on real AI failures and what builders should learn',url:x('2112909905044881639')}
  ]},
  {id:'community',label:'community & devrel',intro:'Where it started: developer relations, open source, and getting people in a room to build.',items:[
-  {name:'CodXCrypt',what:'Founded an open-source community. Ran its first offline dev conference in Delhi NCR',metric:'500 registrations',url:'https://www.linkedin.com/posts/unnati-chhabra-_hey-everyone-codxcrypt-community-kicking-activity-6971525929038696448-Jivd'},
+  {name:'CodXCrypt',what:'Founded an open-source community. Ran its first offline dev conference in Delhi NCR. Read the case study',metric:'500 registrations',url:'/case/codxcrypt'},
   {name:'DevRel Engineer, AssetMantle',what:'Developer relations and contributor experience: templates, welcome bot, workflows',url:'https://ci.linkedin.com/posts/unnati-chhabra-_hey-everyone-im-very-glad-to-announce-activity-6968861325749862401-eTw_'},
   {name:'DevRel at Tezos India, Keploy, Zenduty',what:'About a year of DevRel internships. Also an offer from BoxyHQ',url:'https://www.linkedin.com/posts/unnati-chhabra-_hey-everyone-im-very-ecstatic-to-share-activity-6913127079102357504-sISa'},
   {name:'24-hour hackathon with DTU',what:'Organised it with workshops and career sessions. Sponsored by Lumos Labs, Frienducation and AssetMantle',url:'https://www.linkedin.com/posts/unnati-chhabra-_hey-connections-im-very-glad-to-announce-activity-7045651126427213824-uRtq'},

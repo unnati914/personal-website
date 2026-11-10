@@ -7,7 +7,7 @@ export function FeaturedWork({onCaseStudy}){
  return <section id="work" className="work"><div className="section-label">02 / selected work</div><h2>things I’ve built<br/><span>& shipped</span></h2>
   <div className="feature-grid">{featured.map((p,i)=>{
    const Tag=p.caseStudy?motion.button:motion.a;
-   const props=p.caseStudy?{type:'button',onClick:()=>onCaseStudy(p.caseStudy)}:{href:p.url,target:'_blank',rel:'noreferrer'};
+   const props=p.caseStudy?{type:'button',onClick:()=>onCaseStudy(p.caseStudy)}:{href:p.url,...(/^https?:/.test(p.url)?{target:'_blank',rel:'noreferrer'}:{})};
    return <Tag key={p.name} className="feature" {...props} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*.05}}>
     <div className="feature-media">{p.img?<img src={p.img} alt={`${p.name} screenshot`} loading="lazy"/>:<div className="feature-big"><strong>{p.big}</strong><span>{p.small}</span></div>}</div>
     <div className="feature-body"><div className="project-top"><span>0{i+1}</span><span className="tag">{p.tag}</span></div><h3>{p.name}<ArrowUpRight size={20}/></h3><p>{p.desc}</p><div className="feature-result">{p.result}</div><span className="project-cta">{p.cta} ↗</span></div>

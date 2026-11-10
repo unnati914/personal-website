@@ -15,7 +15,7 @@ export default function GtmCommunity(){
   <div id="gtm-panel" role="tabpanel" aria-labelledby={`gtm-tab-${tab}`}>
    <p className="gtm-intro">{active.intro}</p>
    <AnimatePresence mode="wait"><motion.ul key={tab} className="gtm-list" initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-10}} transition={{duration:.25}}>
-    {active.items.map(it=><li key={it.name}><a href={it.url} target="_blank" rel="noreferrer"><div><h3>{it.name}</h3><p>{it.what}</p></div>{it.metric?<span className="gtm-metric">{it.metric}</span>:<span className="gtm-metric-empty"/>}<ArrowUpRight className="gtm-arrow" size={18}/></a></li>)}
+    {active.items.map(it=><li key={it.name}><a href={it.url} {...(/^https?:/.test(it.url)?{target:'_blank',rel:'noreferrer'}:{})}><div><h3>{it.name}</h3><p>{it.what}</p></div>{it.metric?<span className="gtm-metric">{it.metric}</span>:<span className="gtm-metric-empty"/>}<ArrowUpRight className="gtm-arrow" size={18}/></a></li>)}
    </motion.ul></AnimatePresence>
   </div>
  </section>;
