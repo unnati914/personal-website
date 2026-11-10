@@ -7,7 +7,7 @@ const quips=[
  'is it a bike day? 🏍️',
  'passport’s packed. tabs are open.',
  'shipping beats perfect. every time.',
- 'psst: try a new shade below 💄',
+ 'psst: check out the gtm tab 📣',
  'I run on RAG and lip gloss.'
 ];
 
