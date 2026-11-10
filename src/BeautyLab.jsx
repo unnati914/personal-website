@@ -154,7 +154,7 @@ export default function BeautyLab({onTheme}){
  const [shade,setShade]=useState(0);
  const tryShade=i=>{setShade(i); document.querySelector('.camera')?.scrollIntoView({behavior:'smooth',block:'center'});};
  return <section id="beauty-lab" className="beauty-lab">
-  <div className="section-label">10 / beauty lab</div>
+  <div className="section-label">11 / beauty lab</div>
   <h2>where makeup<br/><span>meets machine learning.</span></h2>
   <p className="lab-intro">Real-time face tracking with MediaPipe, running on your device. Try a lipstick live, or let a photo pick your shade.</p>
   <div className="lab-cards"><TryOn shade={shade} setShade={setShade}/><ShadeMatcher onTheme={onTheme} onTry={tryShade}/></div>

@@ -48,6 +48,10 @@ export const resumeKnowledge = [
     answer: 'Hirvana is a TypeScript website project with a documented GitHub code push checklist covering formatting, builds, commits, and releases.'
   },
   {
+    topics: ['gtm', 'marketing', 'growth', 'devrel', 'community', 'brand', 'brands', 'collab', 'collaboration', 'launch', 'audience', 'twitter', 'followers'],
+    answer: 'Alongside engineering, Unnati does DevRel, GTM and community work. She was a DevRel Engineer at AssetMantle and a DevRel intern at Tezos India, Keploy and Zenduty. She founded the CodXCrypt open-source community, whose first dev conference had about 500 registrations. She has about 60K followers on X and has made campaigns for Bengaluru Tech Summit, HackerRank, Gnani.ai, Vidu AI, Confluentis and phidata. She also ran the launches for her own products, Hirvana and Resume Roaster. See the GTM and community section for links.'
+  },
+  {
     topics: ['contact', 'email', 'hire', 'hello'],
     answer: 'You can reach Unnati at chhabraunnati234@gmail.com or through the social links in the contact section of this site.'
   }

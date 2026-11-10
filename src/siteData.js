@@ -3,7 +3,7 @@ export const projects=[
  {name:'Resume Roaster',tag:'AI product',desc:'An AI tool that turns a resume into practical, brutally useful feedback.',tech:'LLMs · Product · Web',url:'https://github.com/unnati914/Resume-Roaster'},
  {name:'LinkGenie',tag:'agent',desc:'An agentic resume-link workflow built around turning a profile into a shareable experience.',tech:'Agents · Automation',url:'https://github.com/unnati914/linkgenie-resume'},
  {name:'Cart Healthifier',tag:'GenAI',desc:'An LLM-powered experiment focused on understanding cart health and useful product signals.',tech:'LLMs · Data · Product'},
- {name:'Anomalyzer',tag:'GTM + AI',desc:'Product and GTM work around making anomaly intelligence easier to understand and adopt.',tech:'AI · GTM · Content'}
+ {name:'Anomalyzer',tag:'GTM + AI',desc:'Launch messaging for Confluentis’ multi-cloud FinOps platform: what it does, who it is for, and why to trust it.',tech:'AI · GTM · Content',url:'https://x.com/Unnati_twts/status/2078447582695829913',cta:'view the launch post'}
 ];
 
 // Case-study content is taken from the resume facts in resumeData.js; nothing here goes beyond them.

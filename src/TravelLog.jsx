@@ -17,7 +17,7 @@ export default function TravelLog({reduced}){
  const d=curve(trips);
  const trip=trips[active];
  return <section id="travel" className="travel">
-  <div className="section-label">09 / travel log</div>
+  <div className="section-label">10 / travel log</div>
   <div className="travel-head"><h2>passport stamps<br/><span>& long detours.</span></h2><p>Every trip gets a pin. Tap one to flip its postcard.</p></div>
   <div className="travel-grid">
    <div className="travel-map">

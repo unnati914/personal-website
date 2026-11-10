@@ -15,7 +15,7 @@ const beliefs=[
 export default function Beliefs(){
  const [flipped,setFlipped]=useState({});
  return <section id="beliefs" className="beliefs">
-  <div className="section-label">07 / things I believe</div>
+  <div className="section-label">08 / things I believe</div>
   <h2>hot takes,<br/><span>lightly toasted.</span></h2>
   <div className="belief-grid">{beliefs.map((b,i)=><motion.button key={i} className={flipped[i]?'belief flipped':'belief'} aria-pressed={!!flipped[i]} onClick={()=>setFlipped(f=>({...f,[i]:!f[i]}))} initial={{opacity:0,y:24}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*.06}}>
    <motion.div className="belief-inner" animate={{rotateY:flipped[i]?180:0}} transition={{duration:.5,type:'spring',stiffness:140,damping:18}}>
